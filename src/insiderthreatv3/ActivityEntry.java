@@ -1,16 +1,20 @@
 package insiderthreatv3;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ActivityEntry{
 
     private String id;
-    private String date;
+    private Date date;
     private String user;
     private String pc;
     private String activity;
 
     public ActivityEntry(String id,String date,String user,String pc,String activity){
         this.id       = id;
-        this.date     = date;
+        setDate(date);
         this.user     = user;
         this.pc       = pc;
         this.activity = activity;
@@ -26,9 +30,17 @@ public class ActivityEntry{
 
 
     public void setDate(String date){
-        this.date = date;
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+
+        try {
+
+            this.date = formatter.parse(date);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
-    public String getDate(){
+    public Date getDate(){
         return date;
     }
 
