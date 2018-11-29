@@ -14,12 +14,17 @@ package insiderthreatv3;
 public class UserNode{
 
     protected UserEntry userEntry;
+    protected DateNode  child;
     
     public UserNode(UserEntry userEntry){
         this.userEntry = userEntry;
+        addChild("05/27/2010","05/27/2010");
     }
 
-    public void addChild(String currentDate){
+    public void addChild(String from, String to){
+        DateEntry timeFrame = new DateEntry(from, to);
+        
+        child = new DateNode(timeFrame);
     }
 
     public boolean contains(ActivityEntry key){
@@ -39,7 +44,7 @@ public class UserNode{
     public void show(){
         userEntry.show();
         
-        //child.show();
+        child.show();
     }
     
 }

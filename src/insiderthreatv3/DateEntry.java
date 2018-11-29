@@ -13,12 +13,9 @@ public class DateEntry{
 
     private Date from;
     private Date to;
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     
     public DateEntry(String rawFrom, String rawTo){
-        
-        
-        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-
         try {
 
             from = formatter.parse(rawFrom);
@@ -30,15 +27,10 @@ public class DateEntry{
     }
     
 
-    //public boolean contains(ActivityEntry entry){
-    //    return true;
-    //}
-    
-
     public void show(){
         System.out.println("Main data storage frame");
-        System.out.println("From: " + from);
-        System.out.println("To: "   + to);
+        System.out.println("From: " + formatter.format(from));
+        System.out.println("To: "   + formatter.format(to));
         System.out.println();
     }
     
