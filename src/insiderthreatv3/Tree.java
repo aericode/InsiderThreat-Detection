@@ -69,7 +69,9 @@ public class Tree {
                 
                 userEntry = new UserEntry(logEntry[0] , logEntry[1] , logEntry[2] , logEntry[3] , logEntry[4]);
 
+                //adiciona um UserNode
                 root.addChild(userEntry);
+                //adiciona DateNode no nó adicionado
                 root.lastAdded().addChild(fromRaw,toRaw);
 
             }

@@ -17,30 +17,61 @@ public class DateNode{
 
     protected DateEntry dateEntry;
     
+    //frame escolhido pelo user para analisar o banco de dados
+    protected List<PcNode> analysisFrame;
+    
+    //frame escolhido pelo user para analisar o banco de dados   
+    protected List<PcNode> after;
+    protected List<PcNode> before;
+    
     public DateNode(DateEntry dateEntry){
         this.dateEntry = dateEntry;
-        //child = new ArrayList<PcNode>();
+        
+        analysisFrame = new ArrayList<PcNode>();
+        before        = new ArrayList<PcNode>();
+        after         = new ArrayList<PcNode>();
+
+        
     }
 
-    /*
-    public void addChild(ActivityEntry activityNode){
-        PcNode node = new PcNode(activityNode);
-        child.add(node);
+    
+    public void addChild(ActivityEntry activityEntry){
+        //verifica se está antes ou depois do local de armazenamento
+        int position = dateEntry.TimeLocation(activityEntry);
+        
+        PcNode node = new PcNode(activityEntry);
+        
+        //checa se há redundância no nó correspondente antes de criar um nó correspondente ao PC da atividade
+        
+        if(position == 0){
+            if(!isRedundant(analysisFrame, activityEntry ) ){
+                analysisFrame.add(node);
+            }
+            
+        }else if(position == -1){
+            if(!isRedundant(before, activityEntry ) ){
+                before.add(node);
+            }
+            
+        }else if(position == 1){
+            if(!isRedundant(after, activityEntry ) ){
+                after.add(node);
+            }
+            
+        }
     }
-    */
-
-
-
-    /*
-    public PcNode findSon(ActivityEntry key){
-        for (PcNode current : child) {
-            if (current.contains(key)) {
-                return current;
+    
+    public boolean isRedundant(List<PcNode> pcContainer,ActivityEntry activityEntry){
+        for (PcNode current : pcContainer) {
+            if(current.contains(activityEntry)){
+                return true;
             }
         }
-        return null;
+        return false;
     }
-    */
+    
+
+
 
     public void show(){
         dateEntry.show();

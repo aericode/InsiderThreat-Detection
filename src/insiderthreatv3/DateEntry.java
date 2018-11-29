@@ -26,6 +26,13 @@ public class DateEntry{
         }
     }
     
+    public int TimeLocation(ActivityEntry activityEntry){
+        Date activityTime = activityEntry.getDate();
+        
+        if(activityTime.before(from))return -1;
+        if(activityTime.after (to)  )return  1;
+        return 0;        
+    }    
 
     public void show(){
         System.out.println("Main data storage frame");
