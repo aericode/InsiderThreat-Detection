@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
@@ -18,9 +19,14 @@ public class Tree {
     
     private RootNode root;
     
-    
     public Tree(){
         root = new RootNode(null);
+        initializeRoutine();
+    }
+    
+    
+    public void initializeRoutine(){
+              
         
         initializeUsers("../r1/LDAP/2010-04.csv");
         
@@ -38,6 +44,19 @@ public class Tree {
         String line = "";
         String cvsSplitBy = ",";
         UserEntry userEntry;
+        
+        
+        //ADIÇÃO DE FRAMES NOS DATENODES
+        Scanner scanner;
+        scanner = new Scanner(System.in);
+        
+        String fromRaw;
+        String toRaw;
+        
+        System.out.println("Selecione a data de início para a análise ");
+        fromRaw  = scanner.nextLine();
+        System.out.println("Selecione a data do final da análise");
+        toRaw    = scanner.nextLine();  
 
 
         try {
@@ -51,6 +70,7 @@ public class Tree {
                 userEntry = new UserEntry(logEntry[0] , logEntry[1] , logEntry[2] , logEntry[3] , logEntry[4]);
 
                 root.addChild(userEntry);
+                root.lastAdded().addChild(fromRaw,toRaw);
 
             }
             

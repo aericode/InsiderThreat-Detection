@@ -18,7 +18,6 @@ public class UserNode{
     
     public UserNode(UserEntry userEntry){
         this.userEntry = userEntry;
-        addChild("05/27/2010","05/27/2010");
     }
 
     public void addChild(String from, String to){

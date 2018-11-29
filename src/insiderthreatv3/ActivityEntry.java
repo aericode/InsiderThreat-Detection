@@ -11,6 +11,7 @@ public class ActivityEntry{
     private String user;
     private String pc;
     private String activity;
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
     public ActivityEntry(String id,String date,String user,String pc,String activity){
         this.id       = id;
@@ -30,8 +31,6 @@ public class ActivityEntry{
 
 
     public void setDate(String date){
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-
         try {
 
             this.date = formatter.parse(date);
@@ -69,11 +68,13 @@ public class ActivityEntry{
     }
 
     public void show(){
-        System.out.println("ID da atividade:    "     + id);
-        System.out.println("Data da atividade:      " + date);
-        System.out.println("Usuário responsável: "    + user);
-        System.out.println("PC da atividade:   "      + pc);
-        System.out.println("Atividade:  "             + activity);
+        
+        
+        System.out.println("ID da atividade:          " + id);
+        System.out.println("Data e hora da atividade: " + formatter.format(date) );
+        System.out.println("Usuário responsável:      " + user);
+        System.out.println("PC da atividade:          " + pc);
+        System.out.println("Atividade:                " + activity);
         System.out.println();
     }
     

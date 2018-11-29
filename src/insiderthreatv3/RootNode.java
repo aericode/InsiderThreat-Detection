@@ -44,4 +44,8 @@ public class RootNode{
         return null;
     }
     
+    public UserNode lastAdded(){
+        return child.get(child.size() - 1);
+    }
+    
 }
