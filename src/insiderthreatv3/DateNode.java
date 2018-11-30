@@ -16,6 +16,8 @@ import java.util.List;
 public class DateNode{
 
     protected DateEntry dateEntry;
+    private   Histogram histogram;
+    
     
     //frame escolhido pelo user para analisar o banco de dados
     protected List<PcNode> analysisFrame;
@@ -26,11 +28,11 @@ public class DateNode{
     
     public DateNode(DateEntry dateEntry){
         this.dateEntry = dateEntry;
+        histogram = new Histogram();
         
         analysisFrame = new ArrayList<PcNode>();
         before        = new ArrayList<PcNode>();
         after         = new ArrayList<PcNode>();
-
         
     }
 
@@ -40,12 +42,14 @@ public class DateNode{
         int position = dateEntry.TimeLocation(activityEntry);
         
         PcNode node = new PcNode(activityEntry);
+        histogram.update(activityEntry); 
         
         //checa se há redundância no nó correspondente antes de criar um nó correspondente ao PC da atividade
         
-        if(position == 0){
+        if(position == 0){           
             if(!isRedundant(analysisFrame, activityEntry ) ){
                 analysisFrame.add(node);
+                
             }
             
         }else if(position == -1){
@@ -106,6 +110,7 @@ public class DateNode{
 
     public void show(){
         dateEntry.show();
+        histogram.show();
     }
     
 }
