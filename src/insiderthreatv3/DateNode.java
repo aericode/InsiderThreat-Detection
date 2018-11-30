@@ -61,6 +61,7 @@ public class DateNode{
         }
     }
     
+    //já existe um node com o ID do pc pedido pelo ActovityEntry no tempo pedido
     public boolean isRedundant(List<PcNode> pcContainer,ActivityEntry activityEntry){
         for (PcNode current : pcContainer) {
             if(current.contains(activityEntry)){
@@ -68,6 +69,36 @@ public class DateNode{
             }
         }
         return false;
+    }
+    
+    public PcNode findSon(ActivityEntry activityEntry){
+        
+        //verifica se está antes ou depois do local de armazenamento
+        int position = dateEntry.TimeLocation(activityEntry);
+        
+        //checa se há redundância no nó correspondente antes de criar um nó correspondente ao PC da atividade
+        
+        if(position == 0){
+            return findFrameSon(analysisFrame, activityEntry );
+            
+        }else if(position == -1){
+            return findFrameSon(before       , activityEntry );
+            
+        }else if(position == 1){
+            return findFrameSon(after        , activityEntry );
+            
+        }
+        return null;
+    }
+    
+    //encontra o nó dentro do time frame desejado
+    private PcNode findFrameSon(List<PcNode> pcContainer,ActivityEntry activityEntry){
+        for (PcNode current : pcContainer) {
+            if(current.contains(activityEntry)){
+                return current;
+            }
+        }
+        return null;
     }
     
 

@@ -11,6 +11,9 @@ public class ActivityEntry{
     private String user;
     private String pc;
     private String activity;
+    
+    private String originFile;
+    
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
     public ActivityEntry(String id,String date,String user,String pc,String activity){
@@ -21,6 +24,12 @@ public class ActivityEntry{
         this.activity = activity;
     }
 
+    public void setOrigin(String originFile){
+        this.originFile = originFile;
+    }
+    public String getOrigin(){
+        return originFile;
+    }
 
     public void setId(String id){
         this.id = id;

@@ -33,25 +33,22 @@ public class PcNode {
         
     }
     
-    /*
+    
     public void addChild(ActivityEntry activityEntry){
         
-        System.out.println("adicionando entrada");
-        
-        if( activityEntry instanceof DeviceEntry) {
-            deviceChilds.add( (DeviceEntry)activityEntry);
+        if( activityEntry.getOrigin().equals("http")) {
+            httpEntries.add(activityEntry);
             return;
         }
-        if( activityEntry instanceof HttpEntry) {
-            httpChilds.add( (HttpEntry)activityEntry);
+        if( activityEntry.getOrigin().equals("logon")) {
+            logonEntries.add(activityEntry);
             return;
         }
-        if( activityEntry instanceof LogonEntry) {
-            logonChilds.add( (LogonEntry)activityEntry);
+        if( activityEntry.getOrigin().equals("device")) {
+            deviceEntries.add(activityEntry);
             return;
         }
     }
-    */
     
     public boolean contains(ActivityEntry activityEntry){
         return id.equals(activityEntry.getPc() );

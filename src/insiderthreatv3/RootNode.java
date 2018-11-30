@@ -17,7 +17,7 @@ public class RootNode{
     
     protected List<UserNode> child; 
     
-    public RootNode(UserEntry userEntry){
+    public RootNode(){
         child = new ArrayList<UserNode>();
     }
 

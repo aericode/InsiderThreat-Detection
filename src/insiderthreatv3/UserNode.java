@@ -30,10 +30,9 @@ public class UserNode{
         return userEntry.contains(key);
     }
 
-    //TODO: resolução das datas
-    //public DateNode findSon(ActivityEntry key){
-    //    return child;
-    //}
+    public DateNode findSon(ActivityEntry key){
+        return child;
+    }
     
     public boolean checkId(String id){
         return userEntry.getUser_id().equals(id);
