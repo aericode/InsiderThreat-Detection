@@ -24,6 +24,10 @@ public class Histogram {
         hourlyAccess[hour]++;
     }
     
+    public int getHourlyAccess(int i){
+        return hourlyAccess[i];
+    }
+    
     public void show(){
         for(int i = 0; i < 24; i++){
             System.out.println("hora: " + i + " - acessos: " + hourlyAccess[i]);

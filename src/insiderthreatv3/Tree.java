@@ -28,21 +28,14 @@ public class Tree {
               
         
         initializeUsers("../r1/LDAP/2010-04.csv");
+        System.out.println("carregando banco de usuarios...");
         
-        
-        ActivityEntry key;
-        key = new ActivityEntry("{I0C6-Q9AW80AI-5286YZOX}","01/04/2010 06:26:16","DTAA/CBP0628","PC-4750","Logon");
-        
-        searchEntry(key);
-    }
-    
-    
-    public void initializeRoutineFull(){
-              
-        
-        initializeUsers("../r1/LDAP/2010-04.csv");
-        
+        System.out.println("carregando paginas acessadas...");
         initializeActivity("../r1/http.csv");
+        System.out.println("carregando dispositivos acessados...");
+        initializeActivity("../r1/device.csv");
+        System.out.println("carregando registro de logins...");
+        initializeActivity("../r1/logon.csv");
         
         
         ActivityEntry key;
