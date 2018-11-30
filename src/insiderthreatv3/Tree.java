@@ -141,8 +141,8 @@ public class Tree {
                 DateNode level2 = level1.findSon(activityEntry);
                 //também checa redundâncias, caso já haja um registro
                 level2.addChild(activityEntry);
-                //PcNode  level3  = level2.findSon(activityEntry);
-                //level3.addChild(activityEntry);
+                PcNode  level3  = level2.findSon(activityEntry);
+                level3.addChild(activityEntry);
                 
                 //adiciona DateNode no nó adicionado
 
