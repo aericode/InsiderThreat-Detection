@@ -5,6 +5,7 @@
  */
 package insiderthreatv3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,12 +17,20 @@ import java.util.List;
 public class PcNode {
     
     //IMPLEMENTAR HISTOGRAMA AQUI
-    String id;
+    protected String id;
+    protected List<ActivityEntry> httpEntries;
+    protected List<ActivityEntry> logonEntries;
+    protected List<ActivityEntry> deviceEntries;
+
     
     //recebe uma entry e adiciona ao registro
     PcNode(ActivityEntry activityEntry) {
         id = activityEntry.getPc();
-        //addChild(activityEntry);
+        
+        httpEntries   = new ArrayList<ActivityEntry>();
+        logonEntries  = new ArrayList<ActivityEntry>();
+        deviceEntries = new ArrayList<ActivityEntry>();
+        
     }
     
     /*
